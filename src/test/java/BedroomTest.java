@@ -39,4 +39,10 @@ public class BedroomTest {
     public void hasNightlyRate() {
         assertEquals(99, bedroom.getNightlyRate());
     }
+
+    @Test
+    public void canBeMarkedOccupied() {
+        bedroom.addGuest(guest);
+        assertEquals(true, bedroom.getOccupiedStatus());
+    }
 }

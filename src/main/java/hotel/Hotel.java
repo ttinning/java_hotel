@@ -47,7 +47,10 @@ public class Hotel {
     }
 
     public void checkInGuestToBedroom(Guest guest, Bedroom bedroom) {
-        bedroom.addGuest(guest);
+        if (bedroom.getOccupiedStatus() == false) {
+            bedroom.addGuest(guest);
+            bedroom.setOccupiedStatusToTrue();
+        }
     }
 
     public void checkInGuestToConferenceRoom(Guest guest, ConferenceRoom conferenceRoom) {
@@ -73,5 +76,17 @@ public class Hotel {
 
     public int getBedroomSummary(BedroomType bedroomType) {
             return this.bedroomSummary.get(bedroomType);
+    }
+
+    public ArrayList<Bedroom> getListOfVacantRooms() {
+        ArrayList<Bedroom> listOfVacantBedrooms;
+        listOfVacantBedrooms = new ArrayList();
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.getOccupiedStatus() == false) {
+                listOfVacantBedrooms.add(bedroom);
+            }
+        }
+        return listOfVacantBedrooms;
+
     }
 }

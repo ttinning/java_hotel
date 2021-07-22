@@ -9,6 +9,7 @@ public class Bedroom extends Room {
     private BedroomType bedroomType;
     private String roomNumber;
     private int nightlyRate;
+    private boolean occupiedStatus;
 
 
 
@@ -16,6 +17,7 @@ public class Bedroom extends Room {
         this.roomNumber = roomNumber;
         this.bedroomType = bedroomType;
         this.nightlyRate = nightlyRate;
+        this.occupiedStatus = false;
 
     }
     public String getRoomNumber() {
@@ -32,5 +34,13 @@ public class Bedroom extends Room {
 
     public BedroomType getBedroomType() {
         return this.bedroomType;
+    }
+
+    public boolean getOccupiedStatus() {
+        return this.occupiedStatus;
+    }
+
+    public void setOccupiedStatusToTrue() {
+        this.occupiedStatus = true;
     }
 }

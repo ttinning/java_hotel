@@ -71,4 +71,24 @@ public class HotelTest {
         hotel.addBedroom(triple);
         assertEquals(1, hotel.getBedroomSummary(BedroomType.TRIPLE));
     }
+
+    @Test
+    public void canGetOnlyVacantBedrooms() {
+        Bedroom triple = new Bedroom("3", BedroomType.TRIPLE, 200);
+        Bedroom single = new Bedroom("1", BedroomType.SINGLE, 55);
+        hotel.addBedroom(bedroom);
+        hotel.addBedroom(triple);
+        hotel.addBedroom(single);
+        hotel.checkInGuestToBedroom(guest, bedroom);
+        hotel.checkInGuestToBedroom(guest, single);
+        assertEquals(1, hotel.getListOfVacantRooms().size());
+    }
+
+    @Test
+    public void cannotCheckInGuestToOccupiedRoom() {
+        hotel.addBedroom(bedroom);
+        hotel.checkInGuestToBedroom(guest, bedroom);
+        hotel.checkInGuestToBedroom(guest, bedroom);
+        assertEquals(1, bedroom.getNumberOfGuestsInRoom());
+    }
 }
