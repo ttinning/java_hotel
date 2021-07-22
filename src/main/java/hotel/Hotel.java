@@ -47,7 +47,7 @@ public class Hotel {
     }
 
     public void checkInGuestToBedroom(Guest guest, Bedroom bedroom) {
-        if (bedroom.getOccupiedStatus() == false) {
+        if (bedroom.getOccupiedStatus() == false && bedroom.getCapacity() >= guest.getPartySize()) {
             bedroom.addGuest(guest);
             bedroom.setOccupiedStatusToTrue();
         }

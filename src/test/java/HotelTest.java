@@ -21,7 +21,7 @@ public class HotelTest {
         hotel = new Hotel("CodeClan Towers");
         bedroom = new Bedroom("434", BedroomType.DOUBLE, 99);
         conferenceRoom = new ConferenceRoom("Edinburgh Suite", 5);
-        guest = new Guest("Aly");
+        guest = new Guest("Aly", 2);
     }
 
     @Test
@@ -90,5 +90,12 @@ public class HotelTest {
         hotel.checkInGuestToBedroom(guest, bedroom);
         hotel.checkInGuestToBedroom(guest, bedroom);
         assertEquals(1, bedroom.getNumberOfGuestsInRoom());
+    }
+
+    @Test
+    public void cannotCheckIn2IntoASingleRoom() {
+        Bedroom single = new Bedroom("1", BedroomType.SINGLE, 55);
+        hotel.checkInGuestToBedroom(guest, single);
+        assertEquals(false, single.getOccupiedStatus());
     }
 }

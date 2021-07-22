@@ -15,7 +15,7 @@ public class BedroomTest {
     @Before
     public void before() {
         bedroom = new Bedroom("434", BedroomType.DOUBLE, 99);
-        guest = new Guest("Aly");
+        guest = new Guest("Aly", 2);
 
     }
 
@@ -40,9 +40,5 @@ public class BedroomTest {
         assertEquals(99, bedroom.getNightlyRate());
     }
 
-    @Test
-    public void canBeMarkedOccupied() {
-        bedroom.addGuest(guest);
-        assertEquals(true, bedroom.getOccupiedStatus());
-    }
+
 }
